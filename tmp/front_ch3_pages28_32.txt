@@ -1,0 +1,262 @@
+  Working with Tables and Frames
+Chapter 3 · HTML tables,          <IFRAME>    , colspan, rowspan, styling
+
+
+
+
+1. Why tables? Structured information
+
+Tables present complex data in rows and columns, making it readable. Example: LearnMySQL data types shown
+as table vs. plain text.
+
+      Char(M) Fixed 0-255
+      Varchar(M) Variable 0-255
+
+
+
+
+                    NAME                                   LENGTH                           RANGE
+
+  Char(M)                                     Fixed                              0-255
+
+  Varchar(M)                                  Variable                           0-255
+
+
+   core tag        Tables are created with   <TABLE> . Use    border    attribute to show borders.
+
+
+
+
+2. Basic structure of a table
+
+A table can be split into header (<THEAD>), body (<TBODY>), and footer (<TFOOT>). Caption gives a title.
+
+
+
+      Minimal table with rows & columns
+
+
+     <TABLE border="1">
+        <TR><TD>Name</TD><TD>Login ID</TD></TR>
+        <TR><TD>Steve</TD><TD>01234</TD></TR>
+     </TABLE>
+
+
+
+
+     Name                                          Login ID
+
+     Steve                                         01234
+
+
+         simple table
+   Using <THEAD>, <TBODY>, <TFOOT> (order: THEAD, TFOOT,
+  then TBODY)
+
+
+  <TABLE border="1">
+       <CAPTION>Test Results</CAPTION>
+       <THEAD>
+        <TR><TH>Name</TH><TH>Marks</TH></TR>
+       </THEAD>
+       <TFOOT>
+        <TR><TD colspan="2">Total: 3 students</TD></TR>
+       </TFOOT>
+       <TBODY>
+        <TR><TD>Joseph</TD><TD>98</TD></TR>
+        <TR><TD>Steve</TD><TD>92</TD></TR>
+       </TBODY>
+  </TABLE>
+
+
+
+
+   <TH> vs <TD>
+<TH>    creates header cells (bold, centered),   <TD>   standard data cells.
+
+
+
+
+3. Merging cells: colspan & rowspan
+
+ attributes        colspan     merges columns,     rowspan     merges rows.
+
+
+
+
+  ➡ colspan example
+
+
+  <TR><TD colspan="3">Top Three Performers</TD></TR>
+
+
+
+
+                                            Top Three Performers
+
+    Name                                Login                             Marks
+    ⬇ rowspan example
+
+
+    <TR><TD rowspan="3">Top Three</TD><TD>Joseph</TD></TR>
+    <TR><TD>Steve</TD></TR>
+    <TR><TD>John</TD></TR>
+
+
+
+
+     Top Three
+                                                          Joseph
+
+
+                                                          Steve
+
+
+                                                          John
+
+
+
+
+4. Styling tables with CSS
+
+CSS properties to improve table appearance:
+
+
+
+        PROPERTY                              EFFECT                        EXAMPLE
+
+
+    border                    sets border width/style/color        border: 1px solid brown;
+
+
+    border-collapse           collapse/separate borders            border-collapse: collapse;
+
+
+    padding                   space between content and border     padding: 10px;
+
+
+    text-align                alignment inside cells               text-align: center;
+
+
+    color                     text color                           color: blue;
+
+
+    background-color          background of cells/table            background-color: #BDB76B;
+
+
+    width / height            table dimensions                     width: 100%; height: 200px;
+
+
+
+
+    <STYLE>
+       th { background-color: #BDB76B; color: #006400; padding: 5px; }
+       td { border: 1px solid #008B8B; padding: 3px; }
+       caption { font-size: 35px; }
+    </STYLE>
+  5. Frames – displaying multiple pages
+
+A frame is a rectangular region in a browser window that displays a separate Web page. In modern HTML we use
+  <IFRAME>     (inline frame).
+Example: LearnMySQL site with header, navigation, content frames.
+
+
+
+     <IFRAME> basic attributes
+
+
+           ATTRIBUTE                                                  PURPOSE
+
+
+    src                           URL of the page to embed
+
+
+    name                          target name for links
+
+
+    height / width                size of the iframe
+
+
+    seamless                      boolean – frame appears part of page (no borders/scrollbars)
+
+
+    srcdoc                        inline HTML to display (overrides    src )
+
+
+
+
+     Creating three frames (home.html)
+
+
+     <IFRAME name="HeaderFrame" width="91%" height="100" srcdoc="<h1>Learn MySQL</h1>">
+     </IFRAME>
+     <IFRAME src="nav.html" name="NavigationFrame" width="25%" height="500"></IFRAME>
+     <IFRAME name="ContentFrame" width="65%" height="500"></IFRAME>
+
+
+
+
+     Targeting a frame (anchor target)
+Make links open inside a specific iframe using   target="frameName" .
+
+
+
+     <A href="courses.html" target="ContentFrame">Courses</A>
+
+
+
+
+          ↪ Click → opens in "ContentFrame"
+6. Styling frames with CSS
+
+    PROPERTY                                                   EFFECT
+
+
+   margin               space outside the iframe
+
+
+   padding              space between border and content
+
+
+   border               border thickness, style, color
+
+
+   scrolling            yes/no/auto (not CSS, but an attribute; can be styled via overflow in CSS)
+
+
+
+
+    iframe {
+        border: 5px solid black;
+        margin-left: 1px;
+        padding: 2px;
+    }
+
+
+
+
+Quick recap – chapter 3 tags & CSS
+
+        <TABLE>           <TR>               <TD>              <TH>              <THEAD>
+
+
+        <TBODY>           <TFOOT>                <CAPTION>               colspan                rowspan
+
+
+        <IFRAME>            src              name              target               seamless
+
+
+        srcdoc           border                border-collapse                 padding
+
+
+        margin
+
+
+
+
+Tables for structured data · Frames for multi‑page views · CSS for polished look.
+
+
+
+
+                                                                 ⚡ Working with Tables and Frames · complete notes

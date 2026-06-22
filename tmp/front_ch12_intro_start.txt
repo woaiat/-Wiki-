@@ -1,0 +1,427 @@
+   Templates
+
+  HTML-based templates that bind DOM with Vue instance data.
+
+
+
+  ⚙ Directives
+
+  Special attributes like v-if , v-for , v-model to manipulate DOM.
+
+
+
+    Vue-CLI
+
+  Command Line Interface to build and compile projects easily.
+
+
+
+
+ 3. Understanding DOM & Virtual DOM
+
+What is DOM (Document Object Model)?
+The Document Object Model, or DOM, is an interface that treats all markup language (your HTML) as
+connected nodes. It can be seen as an interface of objects for markup elements stored in a tree-like
+structure.
+
+The DOM allows us to write and change styles on elements, and even change elements themselves. This is
+done by adding, modifying, or deleting element tags or CSS styles in the head and body of a document
+because they are represented as nodes and objects.
+
+⚠ Disadvantages of Traditional DOM
+As applications grow, more nodes to traverse, more elements, and more scripts to communicate with those
+elements — the DOM grows slower and costs a lot of processing power. Trying to perform a search or even
+update a DOM becomes a hard task, ultimately affecting the performance of the application.
+
+
+
+
+                                    How Vue.js Virtual DOM Works
+
+
+        Step 1         Initial Render
+
+      Vue creates a Virtual DOM from the template and renders it to the real DOM.
+
+         Template
+        <div id="app">
+            <h1>{{ title }}</h1>
+            <p>{{ message }}</p>
+          <button @click="update">Update</button>
+        </div>
+
+
+
+                                                     →
+         Virtual DOM (in memory)
+        • div#app
+        •   h1 → "Hello Vue!"
+        •    p → "This is Vue.js"
+        •    button → "Update"
+
+
+
+
+        Step 2         Data Changes
+
+      When data changes, Vue creates a new Virtual DOM (New VDOM).
+
+         Data Change
+        // change
+ this.message = 'Virtual DOM is awesome!'
+
+
+
+
+  New Virtual DOM (in memory)
+ <div id="app">
+   <h1>Hello Vue!</h1>
+  <p>Virtual DOM is awesome!</p>
+   <button>Update</button>
+ </div>
+
+
+
+
+ Step 3       Diffing (Compare)
+
+Vue compares the New VDOM with the Old VDOM to find the minimal changes.
+
+  Old Virtual DOM
+ <div id="app">
+  <h1>Hello Vue!</h1>
+  <p>This is Vue.js</p>
+  <button>Update</button>
+ </div>
+
+
+
+                                                  ↔
+  New Virtual DOM
+ <div id="app">
+  <h1>Hello Vue!</h1>
+  <p>Virtual DOM is awesome!</p>
+   <button>Update</button>
+ </div>
+
+
+
+
+  Diff Result: Only the <p> tag content changed from "This is Vue.js" to "Virtual DOM is awesome!"
+
+
+
+
+ Step 4       Patch
+
+Vue creates a patch (instructions) with only the necessary changes.
+
+  Patch (instructions):
+ - Set <p> text to 'Virtual DOM is awesome!'
+
+
+
+
+ Step 5       Apply Patch to Real DOM
+
+Vue applies the patch to the real DOM. Only the changed part is updated.
+
+  Real DOM (in browser)
+ <div id="app">
+  <h1>Hello Vue!</h1>
+  <p>Virtual DOM is awesome!</p>
+   <button>Update</button>
+ </div>
+
+
+
+
+ Step 6       DOM is in Sync
+
+The real DOM is now in sync with the latest data. UI is updated with minimal
+operations.
+
+  Final Real DOM (in browser)
+ <div id="app">
+  <h1>Hello Vue!</h1>
+  <p>Virtual DOM is awesome!</p>
+  <button>Update</button>
+ </div>
+
+
+
+
+Benefits of Virtual DOM:
+        Better Performance
+        Minimal DOM operations
+        Faster UI updates
+        More efficient
+
+
+
+
+       Summary: Vue uses Virtual DOM as an intermediary layer. When data changes, it updates the
+      Virtual DOM, compares it with the previous one (diffing), creates a patch, and applies only the
+      necessary changes to the Real DOM.
+
+
+
+
+   4. VueJS Installation - Complete Setup
+
+Prerequisite: Download and install Node.js from the official website.
+
+Step 1: Verify Node.js and npm Installation
+
+ node -v
+ npm -v
+
+
+
+Step 2: Install Vue CLI Globally
+
+ npm install -g @vue/cli
+
+
+
+Step 3: Verify Vue CLI Installation
+
+ vue --version
+
+
+
+Step 4: Create a New Vue 3 Project
+
+ vue create my-vue-project
+
+
+When prompted:
+
+Choose "Manually select features"
+Select: Babel, Vuex, Router, Linter
+Choose Vue 3.x version
+
+Step 5: Navigate to Project and Run Server
+
+ cd my-vue-project
+ npm run serve
+
+
+
+
+   Alternative Method (Vite - Faster):
+   npm create vue@latest my-project
+  Then: cd my-project && npm install && npm run dev
+ 5. Vue CLI Project Structure
+
+
+   my-vue-project/
+  │
+  ├── node_modules/     ← All project dependencies
+  ├── public/     ← Static assets
+  │ └── index.html     ← Main HTML file
+  ├── src/     ← Source code
+  │ ├── assets/     ← Images, CSS files
+  │ ├── components/     ← Reusable Vue components
+  │ ├── router/     ← Vue Router configuration
+  │ ├── store/     ← Vuex state management
+  │ ├── views/     ← Page-level components
+  │ ├── App.vue     ← Root component
+  │ └── main.js     ← Application entry point
+  ├── package.json     ← Dependencies and scripts
+  └── README.md     ← Project documentation
+
+
+
+
+.vue File Structure (Single File Component)
+
+ <template>
+     <div>HTML / UI part</div>
+ </template>
+
+ <script>
+ export default {
+   name: 'ComponentName',
+     data() { return { ... } },
+     methods: { ... }
+ }
+ </script>
+
+
+ <style scoped>
+ /* CSS styles - only for this component */
+ </style>
+
+
+
+
+ 6. Recommended VS Code Extensions
+
+Vue VSCode Snippets – Code snippets for faster development
+Prettier – Code formatter
+
+
+
+
+ 7. Useful Vue CLI Commands
+
+
+  # Create a new project
+  vue create project-name
+
+  # Run development server
+  npm run serve
+
+  # Build for production
+  npm run build
+ Chapter Summary
+
+In this chapter, you have learned:
+
+VueJS is a progressive framework for building user interfaces
+Features of VueJS: Virtual DOM, Data Binding, Components, Event Handling, Animation/Transition, Computed
+Properties, Templates, Directives, Vue-CLI
+Virtual DOM is a lightweight copy of actual DOM that uses diff algorithm for efficient updates
+How to install Node.js, npm, and Vue CLI
+How to create a new Vue 3 project using vue create
+Project structure of a Vue CLI application
+     Chapter 13 - Components
+     Vue 3     6 core topics with complete component code, theory, and live interactive demos
+
+Simple Component · Data as Function · Local Registration · Global Registration · Dynamic Components ·
+Component Events (mouseover/mouseout)
+
+
+
+
+ 1. Simple Component – Reusable Building Block
+
+
+ Theory: Components are independent, reusable pieces of UI. In Vue 3, a component encapsulates HTML
+(template), logic (script), and scoped styles. Components help split the UI into manageable pieces and can be
+nested. Each component instance maintains its own state when data is a function.
+
+Local registration: import component and add to components option.
+Template: defines HTML structure with Vue directives.
+Scoped styles: CSS that applies only to this component.
+
+
+
+
+//   src/components/BasicComponent.vue
+<template>
+    <div class="my-component">
+     <h1>This is coming from component</h1>
+     <p>Hello! I am a reusable component.</p>
+    </div>
+</template>
+
+
+<script>
+export default {
+    name: "BasicComponent",
+};
+</script>
+
+
+<style scoped>
+.my-component {
+    border: 2px solid green;
+    padding: 20px;
+    margin: 10px;
+    background-color: #e8f5e9;
+    border-radius: 10px;
+}
+</style>
+
+
+//   App.vue
+<template>
+    <div id="app">
+     <h1>My Vue 3 App</h1>
+     <BasicComponent />
+     <BasicComponent />
+     <BasicComponent />
+    </div>
+</template>
+
+
+<script>
+import BasicComponent from "./components/BasicComponent.vue";
+export default {
+    name: "App",
+    components: { BasicComponent },
+};
+</script>
+
+
+
+
+Explanation: The BasicComponent defines a simple card with a heading and paragraph. scoped styles ensure the green
+border only affects this component. In App.vue, we import and register the component locally, then use it three times. Each
+instance is independent — demonstrating reusability.
+
+
+
+
+⚡ Live Demo: Simple Component (three instances)
+
+
+         Each green box is a separate component instance — reusable and independent.
+
+
+
+
+ 2. Data as a Function – Independent State Isolation
+
+
+⚠ Critical Concept: In Vue components, data must be a function that returns a fresh object. If it were a plain
+object, all instances would share the same reference, causing mutations to affect every component. This
+pattern guarantees each instance has its own private reactive scope.
+
+data() { return { count: 0 } } → correct.
+data: { count: 0 } → wrong (Vue 3 throws warning).
+
+
+
+
+//   src/components/ClickCounter.vue
+<template>
+    <div class="counter-box">
+     <h3>Click Counter</h3>
+     <p>You clicked me: <strong>{{ count }}</strong> times</p>
+     <button @click="count++">Click Me!</button>
+     <p class="small">Component ID: {{ componentId }}</p>
+    </div>
+</template>
+
+
+<script>
+export default {
+    name: "ClickCounter",
+    data() {
+     return {
+          count: 0,
+          componentId: Math.random().toString(36).substr(2, 4),
+     };
+    },
+};
+</script>
+
+
+<style scoped>
+.counter-box {
+    border: 2px solid orange;
+    padding: 15px;
+    margin: 10px;
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+    background-color: #fff3e0;
+    border-radius: 10px;
+}
+.counter-box button {
+    background-color: orange;
+    color: white;
+    padding: 8px 15px;

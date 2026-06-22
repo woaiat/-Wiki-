@@ -1,0 +1,742 @@
+     $("a").colorbox({slideshow: true, current: false});
+
+
+
+
+8. galleria plugin – professional galleries
+
+Another popular jQuery plugin that automatically creates thumbnails and displays larger versions on hover. Ideal
+for image‑heavy websites.
+
+
+
+
+     galleria vs colorbox: colorbox creates lightbox overlays, galleria builds thumbnail‑based galleries inside
+     the page.
+
+
+
+
+Quick recap – chapter 5 concepts
+
+    jQuery library          $(document).ready()          Selectors (#id, .class, element)
+
+
+    append() / prepend()           remove()          click()         hide() / show() / toggle()
+
+
+    slideDown() / slideUp() / slideToggle()          fadeOut() / fadeIn()         animate()
+
+
+    colorbox plugin           rel="gallery"        slideshow          galleria plugin
+
+
+
+
+jQuery simplifies DOM manipulation, events, and animations. Plugins like colorbox create stunning
+galleries.
+
+
+
+
+                                       ⚡ Adding Visual Effects to Web Pages · jQuery, selectors, effects, colorbox gallery
+ Complete Bootstrap 4.1.3 Notes
+
+1. Introduction to Bootstrap
+
+     What is Bootstrap? – A free, open-source CSS framework developed by Twitter. It provides
+    responsive grid system, UI components, and JavaScript plugins. Saves time with consistent design
+    across browsers.
+
+
+
+   Key benefits & philosophy
+Mobile-first: styles are built for small screens then scale up.
+12-column flexbox grid: easy responsive layouts.
+Extensive components: navbar, cards, dropdowns, modals, forms.
+Customizable: override with Sass variables or custom CSS.
+
+   Important setup classes & CDN
+  .container     .container-fluid   meta viewport    bootstrap.css    jQuery slim    popper.js
+
+  bootstrap.js
+
+
+
+
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <link rel="stylesheet"
+   href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+   <script
+   src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js">
+   </script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
+   </script>
+
+
+
+  LIVE NOTE:
+
+
+
+
+     The viewport meta ensures proper responsive scaling on all devices. Bootstrap JS requires jQuery &
+     Popper for dropdowns, modals, toggles.
+
+
+
+
+ 2. Grid System
+
+    Bootstrap grid is built with flexbox. It uses 12 columns, rows ( .row ) and columns ( .col-*-* ).
+    Responsive breakpoints control when columns stack horizontally.
+
+
+
+   Responsive breakpoints & important classes
+ Class prefix      Breakpoint      Description
+
+
+   .col-           <576px          Extra small devices (portrait phones) — no media query, always horizontal
+
+
+   .col-sm-        ≥576px          Small devices (landscape phones)
+
+
+   .col-md-        ≥768px          Medium devices (tablets)
+
+
+   .col-lg-        ≥992px          Large devices (laptops/desktops)
+
+
+   .col-xl-        ≥1200px         Extra large desktops
+
+
+
+   Important grid classes explained
+  .row   – flex container, negative margins    .col   – auto-width column        .col-{breakpoint}-{number}
+
+– defines column count (1-12)     .offset-{breakpoint}-{number}     – pushes columns right
+
+  .order-{breakpoint}-{number}   – reorder columns visually       .no-gutters   – removes column padding
+
+   Code & exact output matching
+
+   <div class="row">
+     <div class="col-md-4 bg-primary text-white p-2">col-md-4</div>
+     <div class="col-md-4 bg-success text-white p-2">col-md-4</div>
+     <div class="col-md-4 bg-info text-white p-2">col-md-4</div>
+   </div>
+   <div class="row mt-3">
+     <div class="col-md-6 offset-md-3 bg-warning p-2 text-center">Centered with
+   offset</div>
+   </div>
+
+
+
+  OUTPUT:
+
+
+
+
+  col-md-4
+
+  col-md-4
+
+  col-md-4
+
+
+                                              Centered with offset
+
+
+
+
+✍3. Typography & Text Utilities
+
+    Bootstrap sets global defaults: font-family, line-height, and heading styles. Use       .display-*        for
+    prominent headings, .lead for emphasis.
+
+
+
+   Important typography classes
+  .display-1 to .display-4   – larger, lighter headings   .lead
+
+– makes paragraph stand out (font-size 1.25rem)       .text-muted     – muted gray text
+                                                        .text-muted
+
+  .text-primary/.success/.danger/.warning    – contextual colors      .text-uppercase/.capitalize
+
+– text transformation     .font-weight-bold/.italic   – font styles
+
+
+   <h1 class="display-4">Display heading</h1>
+   <p class="lead">This paragraph uses .lead for emphasis.</p>
+   <p class="text-primary font-weight-bold">Primary bold text</p>
+   <p class="text-danger text-uppercase">danger uppercase alert</p>
+
+
+
+  OUTPUT:
+
+
+
+
+           Display heading
+   This paragraph uses .lead for emphasis.
+
+   Primary bold text
+
+   DANGER UPPERCASE ALERT
+
+
+
+
+4. Forms & Form Controls
+
+     Bootstrap provides global form styling.      .form-control       gives full-width, rounded corners, and
+     focus glow.    .form-group      adds bottom margin. For inline forms use        .form-inline .
+
+
+
+
+   Important form classes
+  .form-control    – styles input, select, textarea   .form-control-lg/.sm    – sizing variants     .form-group
+
+– spacing between form items       .form-check / .form-check-input     – checkboxes/radios        .form-inline
+
+– inline form (horizontal compact)
+
+
+   <div class="form-group">
+      <label>Email</label>
+     <input type="email" class="form-control" placeholder="name@example.com">
+   </div>
+   <div class="form-check">
+      <input class="form-check-input" type="checkbox">
+      <label class="form-check-label">Remember me</label>
+   </div>
+   <button class="btn btn-primary">Submit</button>
+   <form class="form-inline mt-3">
+      <input class="form-control mr-2" placeholder="Username">
+     <button class="btn btn-success">Login</button>
+   </form>
+
+
+
+  OUTPUT:
+
+
+
+
+   Email
+
+     name@example.com
+    Remember me
+   Submit
+
+
+   Username
+
+   Login
+
+
+
+
+5. Buttons, Button Groups & Badges
+
+   ⚡ Buttons use      .btn    base class + modifier    .btn-primary ,          .btn-outline-* . Sizes:       .btn-
+   lg ,       .btn-sm . Group with    .btn-group .
+
+
+
+
+  All important button classes
+ .btn-primary, .btn-secondary, .btn-success, .btn-danger       .btn-outline-light, .btn-outline-dark
+
+ .btn-lg, .btn-sm, .btn-block       .btn-group, .btn-group-vertical         .badge, .badge-pill, .badge-primary
+
+
+
+
+  <button class="btn btn-primary">Primary</button>
+  <button class="btn btn-outline-danger">Outline Danger</button>
+  <button class="btn btn-success btn-sm">Small Success</button>
+  <div class="btn-group mt-2">
+    <button class="btn btn-secondary">Left</button>
+    <button class="btn btn-secondary">Middle</button>
+  </div>
+  <h3>Alerts <span class="badge badge-warning">3</span></h3>
+
+
+
+ OUTPUT:
+
+
+
+
+   Primary        Outline Danger     Small Success     Left     Middle           Alerts 3
+
+
+
+
+▼6. Dropdowns
+
+    Dropdowns require Bootstrap JS + Popper. Use           .dropdown        wrapper,   data-
+   toggle="dropdown"         on the trigger, and   .dropdown-menu        for the menu.
+
+
+
+ Important dropdown classes
+ .dropdown       .dropdown-toggle     .dropdown-menu       .dropdown-item        .dropdown-divider      .dropup
+
+ .dropright
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-
+  toggle="dropdown">
+      Dropdown
+    </button>
+    <div class="dropdown-menu">
+       <a class="dropdown-item" href="#">Profile</a>
+       <a class="dropdown-item" href="#">Settings</a>
+       <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Logout</a>
+    </div>
+  </div>
+
+
+
+ LIVE INTERACTIVE OUTPUT (CLICK):
+
+
+
+
+   Dropdown
+
+
+
+
+7. List Group & Input Group
+
+   List group: displays series of content. Can be used with badges, custom content. Input group:
+   extends form controls with add-ons (text, buttons, icons).
+
+
+
+ Important classes
+ .list-group     .list-group-item    .list-group-item-action    .list-group-flush   .input-group
+
+ .input-group-prepend    .input-group-append    .input-group-text
+
+
+
+
+  <ul class="list-group">
+    <li class="list-group-item active">Inbox <span class="badge badge-light">12</span>
+  </li>
+    <li class="list-group-item">Sent</li>
+  </ul>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend"><span class="input-group-text">@</span></div>
+    <input type="text" class="form-control" placeholder="username">
+  </div>
+
+
+
+ OUTPUT:
+
+
+
+
+     Inbox 12
+
+
+     Sent
+
+
+   @       username
+8. Navigation & Responsive Navbar
+
+    Navbar is responsive and collapsible.     .navbar-expand-{breakpoint}       defines when navbar
+   expands horizontally.      .navbar-dark/.navbar-light     for text colors.
+
+
+
+  Important navbar classes
+ .navbar      .navbar-brand     .navbar-nav      .nav-item   .nav-link     .navbar-toggler
+
+ .collapse .navbar-collapse      .ml-auto .mr-auto
+
+
+
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">MyApp</a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#demoNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="demoNav">
+       <ul class="navbar-nav ml-auto">
+         <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+         <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+ LIVE DEMO (RESIZE TO SEE COLLAPSE):
+
+
+
+
+9. Icons (Font Awesome integration)
+
+    Bootstrap 4 doesn't have built-in icons. Use Font Awesome CDN for scalable vector icons. Add      <i
+   class="fas fa-[name]"></i> .
+
+
+
+
+  <i class="fas fa-home"></i> Home
+  <i class="fas fa-heart text-danger"></i> Like
+  <button class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
+
+
+
+ OUTPUT:
+
+
+
+
+     Home        Like         Save
+
+
+
+
+10. Breadcrumb Navigation
+    Breadcrumbs indicate current page location. Uses           .breadcrumb       and    .breadcrumb-item .
+
+
+
+
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item active">Bootstrap</li>
+    </ol>
+  </nav>
+
+
+
+ OUTPUT:
+
+
+
+
+    Home / Bootstrap
+
+
+
+
+11. Spacing Utilities (Margin & Padding)
+
+    Shorthand:      {property}{sides}-{size} .
+   Property:    m   (margin),    p   (padding). Sides: t, b, l, r, x, y. Sizes: 0–5, auto.
+   Example:      .mt-3    (margin-top 1rem),     .px-4     (padding-x 1.5rem),      .mx-auto    (horizontal
+   center)
+
+
+
+ .m-1 to .m-5       .mt-2 .mb-3 .ml-auto .mx-auto       .p-3 .pt-4 .px-2       .d-flex .justify-content-center
+
+
+
+
+  <div class="bg-light p-4 mb-3">Large padding + margin bottom</div>
+  <div class="bg-warning p-2 mx-auto text-center" style="max-width: 250px;">Centered
+  block</div>
+
+
+
+ OUTPUT:
+
+
+
+
+     Large padding + margin bottom
+
+
+
+                                                    Centered block
+Chapter 12 - Introduction to VueJS
+
+
+ 1. What is VueJS?
+
+VueJS (pronounced "view") is an open-source progressive JavaScript framework used to develop interactive
+web interfaces. It is one of the most famous frameworks used to simplify web development.
+
+Progressive Framework: You can start small and scale up as needed
+Approachable: If you know HTML, CSS & JavaScript, you're ready to develop Vue apps in no time
+Versatile: Can be embedded into any web app or existing project
+Lightweight: Only 20KB min+gzipped runtime blazing fast framework
+Perfect for SPAs: Ideal for building Single Page Applications
+
+
+   Key Point: Vue focuses on the view layer only, making it easy to integrate with other libraries or
+  existing projects.
+
+
+
+
+⚡ 2. Features of VueJS
+
+
+    Virtual DOM
+  A "lite" version of HTML DOM that uses diff algorithms to avoid re-rendering the entire DOM after
+  changes.
+
+
+
+   Data Binding
+
+  Manipulate HTML attributes, change style, and assign classes using the v-bind directive.
+
+
+
+   Components
+
+  Create custom, reusable elements that can be used in HTML.
+
+
+
+   Event Handling
+
+   v-on attribute listens to DOM events in VueJS.
+
+
+
+   Animation/Transition
+
+  Built-in transition component with third-party animation library support.
+
+
+
+   Computed Properties
+
+  Listen to UI changes and perform calculations without additional coding.
+   Templates
+
+  HTML-based templates that bind DOM with Vue instance data.
+
+
+
+  ⚙ Directives
+
+  Special attributes like v-if , v-for , v-model to manipulate DOM.
+
+
+
+    Vue-CLI
+
+  Command Line Interface to build and compile projects easily.
+
+
+
+
+ 3. Understanding DOM & Virtual DOM
+
+What is DOM (Document Object Model)?
+The Document Object Model, or DOM, is an interface that treats all markup language (your HTML) as
+connected nodes. It can be seen as an interface of objects for markup elements stored in a tree-like
+structure.
+
+The DOM allows us to write and change styles on elements, and even change elements themselves. This is
+done by adding, modifying, or deleting element tags or CSS styles in the head and body of a document
+because they are represented as nodes and objects.
+
+⚠ Disadvantages of Traditional DOM
+As applications grow, more nodes to traverse, more elements, and more scripts to communicate with those
+elements — the DOM grows slower and costs a lot of processing power. Trying to perform a search or even
+update a DOM becomes a hard task, ultimately affecting the performance of the application.
+
+
+
+
+                                    How Vue.js Virtual DOM Works
+
+
+        Step 1         Initial Render
+
+      Vue creates a Virtual DOM from the template and renders it to the real DOM.
+
+         Template
+        <div id="app">
+            <h1>{{ title }}</h1>
+            <p>{{ message }}</p>
+          <button @click="update">Update</button>
+        </div>
+
+
+
+                                                     →
+         Virtual DOM (in memory)
+        • div#app
+        •   h1 → "Hello Vue!"
+        •    p → "This is Vue.js"
+        •    button → "Update"
+
+
+
+
+        Step 2         Data Changes
+
+      When data changes, Vue creates a new Virtual DOM (New VDOM).
+
+         Data Change
+        // change
+ this.message = 'Virtual DOM is awesome!'
+
+
+
+
+  New Virtual DOM (in memory)
+ <div id="app">
+   <h1>Hello Vue!</h1>
+  <p>Virtual DOM is awesome!</p>
+   <button>Update</button>
+ </div>
+
+
+
+
+ Step 3       Diffing (Compare)
+
+Vue compares the New VDOM with the Old VDOM to find the minimal changes.
+
+  Old Virtual DOM
+ <div id="app">
+  <h1>Hello Vue!</h1>
+  <p>This is Vue.js</p>
+  <button>Update</button>
+ </div>
+
+
+
+                                                  ↔
+  New Virtual DOM
+ <div id="app">
+  <h1>Hello Vue!</h1>
+  <p>Virtual DOM is awesome!</p>
+   <button>Update</button>
+ </div>
+
+
+
+
+  Diff Result: Only the <p> tag content changed from "This is Vue.js" to "Virtual DOM is awesome!"
+
+
+
+
+ Step 4       Patch
+
+Vue creates a patch (instructions) with only the necessary changes.
+
+  Patch (instructions):
+ - Set <p> text to 'Virtual DOM is awesome!'
+
+
+
+
+ Step 5       Apply Patch to Real DOM
+
+Vue applies the patch to the real DOM. Only the changed part is updated.
+
+  Real DOM (in browser)
+ <div id="app">
+  <h1>Hello Vue!</h1>
+  <p>Virtual DOM is awesome!</p>
+   <button>Update</button>
+ </div>
+
+
+
+
+ Step 6       DOM is in Sync
+
+The real DOM is now in sync with the latest data. UI is updated with minimal
+operations.
+
+  Final Real DOM (in browser)
+ <div id="app">
+  <h1>Hello Vue!</h1>
+  <p>Virtual DOM is awesome!</p>
+  <button>Update</button>
+ </div>
+
+
+
+
+Benefits of Virtual DOM:
+        Better Performance
+        Minimal DOM operations
+        Faster UI updates
+        More efficient
+
+
+
+
+       Summary: Vue uses Virtual DOM as an intermediary layer. When data changes, it updates the
+      Virtual DOM, compares it with the previous one (diffing), creates a patch, and applies only the
+      necessary changes to the Real DOM.
+
+
+
+
+   4. VueJS Installation - Complete Setup
+
+Prerequisite: Download and install Node.js from the official website.
+
+Step 1: Verify Node.js and npm Installation
+
+ node -v
+ npm -v
+
+
+
+Step 2: Install Vue CLI Globally
+
+ npm install -g @vue/cli
+
+
+
+Step 3: Verify Vue CLI Installation
+
+ vue --version
+
+
+
+Step 4: Create a New Vue 3 Project
+
+ vue create my-vue-project
+
+
+When prompted:
+
+Choose "Manually select features"
+Select: Babel, Vuex, Router, Linter
+Choose Vue 3.x version
+
+Step 5: Navigate to Project and Run Server
+
+ cd my-vue-project
+ npm run serve
+
+
+
+
+   Alternative Method (Vite - Faster):
+   npm create vue@latest my-project
+  Then: cd my-project && npm install && npm run dev
